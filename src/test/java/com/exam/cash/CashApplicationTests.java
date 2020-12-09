@@ -9,5 +9,4 @@ class CashApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }

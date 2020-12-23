@@ -29,8 +29,10 @@ public class LoanController {
         return service.getAllLoans();
     }
 
-    @GetMapping(value = "/loans", params = {"page", "size", "user_id"})
-    public Page<Loan> getLoans(@RequestParam("page") int page, @RequestParam("size") int size, @RequestParam("user_id") Optional<Long> userId) {
+    @GetMapping(value = "/loans", params = {"page", "size"})
+    public Page<Loan> getLoans(@RequestParam(value = "page") int page, 
+                               @RequestParam(value = "size") int size, 
+                               @RequestParam(value = "user_id", required = false) Optional<Long> userId) {
 
         return userId.isPresent() ? service.getLoans(userId.get(), PageRequest.of(page, size)) 
                                   : service.getLoans(PageRequest.of(page, size));
